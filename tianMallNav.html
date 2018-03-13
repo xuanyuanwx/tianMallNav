@@ -43,19 +43,25 @@ window.onload=function(){
 	var ul=nav.children[1];
 	var allLis=ul.children;
 	var beginX=0;
+	//遍历标题
 	for(var i=0;i<allLis.length;i++){
+		//鼠标移入
 		allLis[i].onmouseover=function(){
 			end=this.offsetLeft;
 			this.style.color="white";
 		}
+		//鼠标点击
 		allLis[i].onclick=function(){
 			beginX=end;
 		}
+		//鼠标移出
 		allLis[i].onmouseout=function(){
 			end=beginX;
 			this.style.color="black";
 		}
 	}
+
+	//背景图片缓动效果实现
 	var begin=0; var end=0;
 	var timer=setInterval(function(){
 		begin=begin+(end-begin)*0.1;
