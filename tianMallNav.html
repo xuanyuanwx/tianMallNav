@@ -1,0 +1,84 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript" src="jQuery/jquery.min.js"></script>
+<!-- <link rel="stylesheet" href="jQuerymobile/jquery.mobile-1.4.5.min.css"> -->
+<!-- <script type="text/javascript" src="jQuerymobile/jquery.mobile-1.4.5.min.js"></script> -->
+<style>
+	body{ 
+	   margin:0px;
+	   padding:0px;
+	   list-style: none;
+	   background: pink; 
+	 }
+	 #nav{ 
+	 	width: 900px; 
+	 	height: 60px;
+	 	border:1px solid #ccc;
+	 	background: #fff;
+	 	border-radius: 5px;
+	 	position: relative;
+	 	margin:100px auto;
+	 }
+	 #nav ul{
+	 	position: relative;
+	 }
+	 #bg_sty{ width: 107px; height: 48px; position:absolute; background:url("images/tcat.png") no-repeat; }
+	 #nav ul li{
+	 	list-style: none;
+	 	float: left;
+	 	width: 104px;
+	 	height: 50px;
+	 	line-height: 40px;
+	 	text-align: center;
+	
+	 }
+</style>
+</head>
+<script>
+window.onload=function(){
+	//获取元素
+	var nav=$("nav");
+	var bgsty=nav.children[0];
+	var ul=nav.children[1];
+	var allLis=ul.children;
+	var beginX=0;
+	for(var i=0;i<allLis.length;i++){
+		allLis[i].onmouseover=function(){
+			end=this.offsetLeft;
+			this.style.color="white";
+		}
+		allLis[i].onclick=function(){
+			beginX=end;
+		}
+		allLis[i].onmouseout=function(){
+			end=beginX;
+			this.style.color="black";
+		}
+	}
+	var begin=0; var end=0;
+	var timer=setInterval(function(){
+		begin=begin+(end-begin)*0.1;
+		bgsty.style.left=begin+"px";
+	},10);
+}
+function $(id){
+		return typeof id==="string"?document.getElementById(id):null;
+}
+</script>
+<body>
+	<div id="nav">
+		<span id="bg_sty"></span>
+		<ul>
+			<li>标题一</li>
+			<li>标题二</li>
+			<li>标题三</li>
+			<li>标题四</li>
+			<li>标题五</li>
+			<li>标题六</li>
+			<li>标题七</li>
+			<li>标题八</li>
+		</ul>
+	</div>
+</body>
+</html>
